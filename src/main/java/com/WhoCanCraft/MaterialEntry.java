@@ -1,5 +1,4 @@
 package com.WhoCanCraft;
-
 class MaterialEntry
 {
 	final String name;

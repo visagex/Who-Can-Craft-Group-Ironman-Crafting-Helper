@@ -580,8 +580,9 @@ public class WhoCanCraftPlugin extends Plugin
 		for (SkillRequirement req : recipe.requirements)
 		{
 			net.runelite.client.hiscore.Skill s = hr.getSkill(req.skill);
-			if (s == null || s.getLevel() < req.level)
-				return MemberResult.cannotCraft(req.skill, req.level, s.getLevel());
+			int currentLevel = s != null ? s.getLevel() : 0;
+			if (currentLevel < req.level)
+				return MemberResult.cannotCraft(req.skill, req.level, currentLevel);
 		}
 		return MemberResult.canCraft();
 	}

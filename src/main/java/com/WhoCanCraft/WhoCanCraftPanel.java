@@ -8,7 +8,6 @@ import net.runelite.http.api.item.ItemPrice;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.MatteBorder;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -137,13 +136,11 @@ class WhoCanCraftPanel extends PluginPanel
 		row.setMaximumSize(new Dimension(Integer.MAX_VALUE, 48));
 		row.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
-		// Icon
 		JLabel iconLabel = new JLabel();
 		iconLabel.setPreferredSize(new Dimension(36, 36));
 		int itemId = recipe.itemId;
 		if (itemId < 0)
 		{
-			// Try to find the item by name
 			List<ItemPrice> matches = itemManager.search(recipe.itemName);
 			if (!matches.isEmpty())
 			{
@@ -156,7 +153,6 @@ class WhoCanCraftPanel extends PluginPanel
 			icon.addTo(iconLabel);
 		}
 
-		// Name + requirements text
 		JPanel textPanel = new JPanel();
 		textPanel.setLayout(new BoxLayout(textPanel, BoxLayout.Y_AXIS));
 		textPanel.setBackground(ColorScheme.DARKER_GRAY_COLOR);
@@ -175,7 +171,6 @@ class WhoCanCraftPanel extends PluginPanel
 		row.add(iconLabel, BorderLayout.WEST);
 		row.add(textPanel, BorderLayout.CENTER);
 
-		// Hover highlight
 		row.addMouseListener(new MouseAdapter()
 		{
 			@Override
@@ -223,7 +218,6 @@ class WhoCanCraftPanel extends PluginPanel
 		{
 			contentPanel.removeAll();
 
-			// Back button (only if there were multiple results)
 			if (lastResults != null && lastResults.size() > 1)
 			{
 				JButton backButton = new JButton("← Back to results");
